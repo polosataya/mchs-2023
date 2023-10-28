@@ -78,5 +78,4 @@ fig = (px.choropleth_mapbox(
 
 fig.update_layout(margin={"r": 0, "t": 0, "l": 0, "b": 0})
 fig.update_layout(height=800)
-st.title('Географическая карта региона')
 st.plotly_chart(fig, use_container_width=True, width=800, height=800)
