@@ -59,12 +59,17 @@ df=data[data.date==choice_date]
 geojson_obj=(hexagons_dataframe_to_geojson(df, hex_id_field='district', value_field=choice_value,
                                            geometry_field='geometry'))
 
+# Диапазоны для зеленого, желтого и красного
+color_scale = [[0, 'green'], [0.33, 'green'],
+               [0.34, 'yellow'], [0.67, 'yellow'],
+                [0.68, 'red'], [1, 'red']]
+
 fig = (px.choropleth_mapbox(
                     df,
                     geojson=geojson_obj,
                     locations='district',
                     color=choice_value,
-                    color_continuous_scale="Viridis",
+                    color_continuous_scale=color_scale,
                     mapbox_style='carto-positron',
                     zoom=5,
                     center={"lat": 59.02968, "lon": 56.26679},
